@@ -1,10 +1,10 @@
-Autocorrect System[¶](#Autocorrect-System) {#Autocorrect-System}
+Autocorrect System
 ==========================================
 
 An autocorrect system predicts that likelihood of a mispelled word to
 the correct one.
 
-Steps for Implementing an autocorrect system[¶](#Steps-for-Implementing-an-autocorrect-system) {#Steps-for-Implementing-an-autocorrect-system}
+Steps for Implementing an autocorrect system
 ----------------------------------------------------------------------------------------------
 
     1. Identify the mispelled word
@@ -13,7 +13,7 @@ Steps for Implementing an autocorrect system[¶](#Steps-for-Implementing-an-auto
     4. Order filtered candidates based on word probabilities
     5. Predict the most likely candidate
 
-Identify a mispelled word[¶](#Identify-a-mispelled-word) {#Identify-a-mispelled-word}
+Identify a mispelled word
 ========================================================
 
 A word is mispelled if it is not found in the vocabulary of the corpus
@@ -27,7 +27,7 @@ In [ ]:
     from collections import Counter
     import json
 
-### Functions for reading texts from files and parsing them into proper data for manipulation.[¶](#Functions-for-reading-texts-from-files-and-parsing-them-into-proper-data-for-manipulation.) {#Functions-for-reading-texts-from-files-and-parsing-them-into-proper-data-for-manipulation.}
+### Functions for reading texts from files and parsing them into proper data for manipulation.
 
 In [ ]:
 
@@ -63,14 +63,14 @@ In [ ]:
 
         return dictionary
 
-### Reading data from the text file Dictionary.txt and letter.txt into `dictionary` and `data` variables.[¶](#Reading-data-from-the-text-file-Dictionary.txt-and-letter.txt-into-dictionary-and-data-variables.) {#Reading-data-from-the-text-file-Dictionary.txt-and-letter.txt-into-dictionary-and-data-variables.}
+### Reading data from the text file Dictionary.txt and letter.txt into `dictionary` and `data` variables.
 
 In [ ]:
 
     dictionary = read_corpus('./dictionary.txt')
     data = read_corpus_dataref('./letter.txt')
 
-### Functions to manipulate text from the dictionary list[¶](#Functions-to-manipulate-text-from-the-dictionary-list) {#Functions-to-manipulate-text-from-the-dictionary-list}
+### Functions to manipulate text from the dictionary list
 
 In [ ]:
 
@@ -96,7 +96,7 @@ In [ ]:
         letters = string.ascii_lowercase
         return [l+c+r[1:] for l,r in split_word(word) if r for c in letters]
 
-### Implementing levels of Editing to suggest better words from data[¶](#Implementing-levels-of-Editing-to-suggest-better-words-from-data) {#Implementing-levels-of-Editing-to-suggest-better-words-from-data}
+### Implementing levels of Editing to suggest better words from data
 
 In [ ]:
 
@@ -123,7 +123,7 @@ In [ ]:
     total_count = float(sum(word_count.values()))
     word_probability = {dict_word: word_count[dict_word]/total_count for dict_word in word_count.keys()}
 
-### Running tests[¶](#Running-tests) {#Running-tests}
+### Running tests
 
 In [ ]:
 
@@ -133,7 +133,7 @@ In [ ]:
 
      For the incorrectly spelt word: "blakc", the Most likely word(s) to be correct is/are: "[('black', 0.00033670593516955846), ('blake', 2.0784316985775213e-06), ('blanc', 1.0392158492887607e-06)]"
 
-### Running tests on a text file or stream of text[¶](#Running-tests-on-a-text-file-or-stream-of-text) {#Running-tests-on-a-text-file-or-stream-of-text}
+### Running tests on a text file or stream of text
 
 In [ ]:
 
